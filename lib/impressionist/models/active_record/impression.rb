@@ -9,6 +9,7 @@ class Impression < ActiveRecord::Base
   # sets belongs_to and attr_accessible depending on Rails version
   Impressionist::SetupAssociation.new(self).set
 
-  after_save :impressionable_counter_cache_updatable?
+  # We will handle updating the counter cache in a background job
+  # after_save :impressionable_counter_cache_updatable?
 
 end
