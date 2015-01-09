@@ -20,7 +20,6 @@ class Impression
   field :message
   field :referrer
 
-  # We will handle updating the counter cache in a background job
-  # after_save :impressionable_counter_cache_updatable?
+  after_save :impressionable_counter_cache_updatable? if Impressionist.enable_save_callback
 
 end
